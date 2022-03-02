@@ -18,6 +18,8 @@ import vh from '../../utils/units/vh';
 import theme from '../../utils/units/theme';
 import DatePicker from 'react-native-date-picker'
 import moment from 'moment'
+import TextBold from '../../components/TextBold';
+import TextRegular from '../../components/TextRegular';
 
 class Login extends React.Component {
   constructor(props) {
@@ -81,7 +83,7 @@ class Login extends React.Component {
       case 'radio':
         return (
           <View>
-            <Text style={{fontSize: 1.7*vh, marginLeft: 2*vw}}>GENDER</Text>
+            <TextBold style={{fontSize: 1.7*vh, marginLeft: 2*vw}}>GENDER</TextBold>
             <View
               style={{
                 flexDirection: 'row',
@@ -177,7 +179,7 @@ class Login extends React.Component {
           />
         )}
       </TouchableOpacity>
-      <Text style={{marginLeft: 1.5 * vw}}>{item?.label}</Text>
+      <TextRegular style={{marginLeft: 1.5 * vw, fontSize: 1.5*vh}}>{item?.label}</TextRegular>
     </View>
   );
 

@@ -5,7 +5,7 @@ import { Fonts } from "../../assets/fonts";
 export default style = StyleSheet.create({
     text: {
         fontSize: 2.5 * vh,
-        fontFamily: Fonts.GB,
+        fontFamily: Fonts.PB,
         color: '#000',
         padding: 0,
         margin: 0,

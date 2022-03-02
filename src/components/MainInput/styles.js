@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 1.8 * vh,
-    color: '#787878',
+    // color: '#787878',
     marginLeft: 2 * vw,
   },
   labelContainer: {
