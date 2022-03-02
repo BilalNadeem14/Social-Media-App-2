@@ -18,6 +18,7 @@ import vh from '../../utils/units/vh';
 import {icons} from '../../assets/images';
 import {connect} from 'react-redux';
 import {actions} from '../../redux/actions';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 class Home extends React.Component {
   constructor(props) {
@@ -174,16 +175,12 @@ class Home extends React.Component {
   renderHeaderContent = () => (
     <View style={styles.header_container}>
       <View style={styles.titleContainer}>
+          {/* <AntDesign
+          name='arrowleft'
+          size={2*vh}
+          /> */}
         <Text style={styles.headerTitleStyles}>Home</Text>
 
-        {/* {this.state.searchBoxVisible && <View style={styles.searchBarContainer}>
-                <TextInput placeholder="Search Friends" style={{ color: 'black', textAlign: 'left', justifyContent: 'center' }} />
-            </View>}
-
-            <View style={{ justifyContent: 'space-between', width: "25%", flexDirection: 'row' }}>
-                {this.renderHeaderButton('search')}
-                {this.renderHeaderButton('email')}
-            </View> */}
       </View>
     </View>
   );

@@ -28,13 +28,6 @@ class App extends React.Component {
         </PersistGate>
       </Provider>
     )
-
-    // <Login/>
-    // (
-    //   <View>
-    //     <Text>hey</Text>
-    //   </View>
-    // )
   }
 }
 

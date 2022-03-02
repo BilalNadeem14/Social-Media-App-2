@@ -79,44 +79,6 @@ const HomeTabNavigator = (props) => {
                 component={Profile}
 
             />
-
-            {/* <HomeTabs.Screen
-                options={{
-                    tabBarIcon: (params) => {
-                        return (
-                            <TabBarButton params={params} name='Package' />
-                        )
-                    },
-                }}
-
-                name="PackageStackNavigator"
-                component={PackageStackNavigator}
-
-            /> */}
-            {/* <HomeTabs.Screen
-                options={{
-                    tabBarIcon: (params) => {
-                        return (
-                            <TabBarButton params={params} name='Chat' />
-                        )
-                    },
-                }}
-
-                name="ChatStackNavigator"
-                component={ChatStackNavigator}
-            /> */}
-            {/* <HomeTabs.Screen
-                options={{
-                    tabBarIcon: (params) => {
-                        return (
-                            <TabBarButton params={params} name='Menu' />
-                        )
-                    },
-                }}
-
-                name="MenuStackNavigator"
-                component={MenuStackNavigator}
-            /> */}
         </HomeTabs.Navigator>
 
     );
