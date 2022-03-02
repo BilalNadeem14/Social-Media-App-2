@@ -1,178 +1,245 @@
-import React from 'react'
-import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View, ScrollView, TextInput, Platform } from 'react-native'
+import React from 'react';
+import {
+  FlatList,
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  TextInput,
+  Platform,
+} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Button from '../../components/Button';
-import styles from './styles'
-import images, { assets } from '../../assets/images'
-import vh from '../../utils/units/vh'
-import { icons } from '../../assets/images'
-import { connect } from 'react-redux';
-import { actions } from '../../redux/actions';
+import styles from './styles';
+import images, {assets} from '../../assets/images';
+import vh from '../../utils/units/vh';
+import {icons} from '../../assets/images';
+import {connect} from 'react-redux';
+import {actions} from '../../redux/actions';
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: false,
-            userImage: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      userImage: '',
 
-            search: '',
-            response: []
-        };
+      search: '',
+      response: [],
+    };
+  }
+
+  componentDidMount() {
+    // this.props.navigation.addListener('focus', () => {
+      this.getPosts();
+    // });
+  }
+
+  getPosts = () => {
+    try {
+      const get_posts_respose = this.props.get_all_posts();
+      console.log('get_posts_respose: ', get_posts_respose);
+    } catch (error) {
+      console.log('get_posts_respose: ', error);
     }
+  };
 
-    componentDidMount() {
-        this.props.navigation.addListener('focus', () => {
-            this.getPosts();
-        })
-    }
-
-
-    getPosts = () => {
-        try {
-            const get_posts_respose = this.props.get_all_posts();
-            console.log("get_posts_respose: ", get_posts_respose);
-        } catch (error) {
-            console.log("get_posts_respose: ", error);
-        }
-    }
-
-
-    renderNewPostComponent = () => <><View style={styles.newPostContainer}>
-        <Image source={assets.sample_images.profile_header} resizeMode='cover' style={{ height: 5.5 * vh, borderRadius: (5.5 * vh) / 2, width: 5.5 * vh }} />
+  renderNewPostComponent = () => (
+    <>
+      <View style={styles.newPostContainer}>
+        <Image
+          source={assets.sample_images.profile_header}
+          resizeMode="cover"
+          style={{
+            height: 5.5 * vh,
+            borderRadius: (5.5 * vh) / 2,
+            width: 5.5 * vh,
+          }}
+        />
         <View style={styles.searchBarContainer}>
-            <TextInput placeholder="What do you think?" style={{ color: 'black', textAlign: 'left', justifyContent: 'center' }} />
+          <TextInput
+            placeholder="What do you think?"
+            style={{
+              color: 'black',
+              textAlign: 'left',
+              justifyContent: 'center',
+            }}
+          />
         </View>
         {this.renderHeaderButton('burst')}
-
-    </View>
-        <View style={styles.listSeperator} />
-
+      </View>
+      <View style={styles.listSeperator} />
     </>
+  );
 
-    renderListHeaderSeperator = () => (
-        <View //style={styles.ListHeader}
-        >
-            <View style={styles.headerBackground}>
-                <View style={styles.header_styles}>
-                    <ImageBackground resizeMode='cover' source={assets.sample_images.profile_header} style={styles.back} >
-                        {this.renderHeaderContent()}
-                    </ImageBackground>
-                </View>
-                {this.renderAvatarContent()}
-            </View>
-            <View style={styles.listSeperator} />
+  renderListHeaderSeperator = () => (
+    <View //style={styles.ListHeader}
+    >
+      <View style={styles.headerBackground}>
+        <View style={styles.header_styles}>
+          <ImageBackground
+            resizeMode="cover"
+            source={assets.sample_images.profile_header}
+            style={styles.back}>
+            {this.renderHeaderContent()}
+          </ImageBackground>
         </View>
-    )
-
-
-    renderListItems = ({ item, index }) => <View style={styles.listItemStyles}>
-        <View style={styles.listItemTitleContainer}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                {this.renderListAvatarContent()}
-                <View>
-                    <Text style={[styles.headerTitleStyles, { color: 'black', fontSize: 1.8 * vh }]}>
-                        {item?.title}
-                    </Text>
-                    <Text style={[styles.headerTitleStyles, { color: 'black', fontSize: 1.5 * vh, fontWeight: '100' }]}>
-                        {item?.body}
-                    </Text>
-                </View>
-
-            </View>
-            {/* <Image resizeMode='cover' source={assets.icons.heart_filled} style={[{ height: 3 * vh, width: 3 * vh, }]} /> */}
-
-        </View>
-        {/* <Image resizeMode='cover' source={assets.sample_images.profile_header} style={styles.postImage} /> */}
-
+        {this.renderAvatarContent()}
+      </View>
+      <View style={styles.listSeperator} />
     </View>
+  );
 
-    renderListAvatarContent = () => (
-        <View style={[styles.avatarWrapperContainer, { position: 'relative', top: 0, left: 0, height: 9 * vh, width: 9 * vh }]}>
-            <View style={[styles.avatarContainer, { height: 7 * vh, width: 7 * vh, borderRadius: (7 * vh) / 2, borderColor: 'yellow', borderWidth: 0.2 * vh }]}>
-                <Image resizeMode='cover' source={assets.sample_images.profile_header} style={[styles.avatarImage, { height: 6 * vh, width: 6 * vh, borderRadius: (6 * vh) / 2 }]} />
-            </View>
-        </View>
-
-    )
-
-    renderAvatarContent = () => (
-        <View style={styles.avatarWrapperContainer}>
-            <View style={styles.avatarContainer}>
-                <Image resizeMode='cover' source={assets.sample_images.profile_header} style={styles.avatarImage} />
-            </View>
-        </View>
-    )
-
-    renderHeaderButton = (type) => (
-        <TouchableOpacity style={styles.headerButtonStyles}>
-            <Image resizeMode='contain' source={images.assets.icons[type]} style={styles.iconImageStyles} />
-        </TouchableOpacity>
-    )
-
-
-    renderHeaderContent = () => <View style={styles.header_container}>
-
-        <View style={styles.titleContainer}>
-            <Text style={styles.headerTitleStyles}>
-                Feed
+  renderListItems = ({item, index}) => (
+    <View style={styles.listItemStyles}>
+      <View style={styles.listItemTitleContainer}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          {this.renderListAvatarContent()}
+          <View>
+            <Text
+              style={[
+                styles.headerTitleStyles,
+                {color: 'black', fontSize: 1.8 * vh},
+              ]}>
+              {item?.title}
             </Text>
+            <Text
+              style={[
+                styles.headerTitleStyles,
+                {color: 'black', fontSize: 1.5 * vh, fontWeight: '100'},
+              ]}>
+              {item?.body}
+            </Text>
+          </View>
+        </View>
+        {/* <Image resizeMode='cover' source={assets.icons.heart_filled} style={[{ height: 3 * vh, width: 3 * vh, }]} /> */}
+      </View>
+      {/* <Image resizeMode='cover' source={assets.sample_images.profile_header} style={styles.postImage} /> */}
+    </View>
+  );
 
-            {this.state.searchBoxVisible && <View style={styles.searchBarContainer}>
+  renderListAvatarContent = () => (
+    <View
+      style={[
+        styles.avatarWrapperContainer,
+        {position: 'relative', top: 0, left: 0, height: 9 * vh, width: 9 * vh},
+      ]}>
+      <View
+        style={[
+          styles.avatarContainer,
+          {
+            height: 7 * vh,
+            width: 7 * vh,
+            borderRadius: (7 * vh) / 2,
+            borderColor: 'yellow',
+            borderWidth: 0.2 * vh,
+          },
+        ]}>
+        <Image
+          resizeMode="cover"
+          source={assets.sample_images.profile_header}
+          style={[
+            styles.avatarImage,
+            {height: 6 * vh, width: 6 * vh, borderRadius: (6 * vh) / 2},
+          ]}
+        />
+      </View>
+    </View>
+  );
+
+  renderAvatarContent = () => (
+    <View style={styles.avatarWrapperContainer}>
+      <View style={styles.avatarContainer}>
+        <Image
+          resizeMode="cover"
+          source={assets.sample_images.profile_header}
+          style={styles.avatarImage}
+        />
+      </View>
+    </View>
+  );
+
+  renderHeaderButton = type => (
+    <TouchableOpacity style={styles.headerButtonStyles}>
+      <Image
+        resizeMode="contain"
+        source={images.assets.icons[type]}
+        style={styles.iconImageStyles}
+      />
+    </TouchableOpacity>
+  );
+
+  renderHeaderContent = () => (
+    <View style={styles.header_container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.headerTitleStyles}>Home</Text>
+
+        {/* {this.state.searchBoxVisible && <View style={styles.searchBarContainer}>
                 <TextInput placeholder="Search Friends" style={{ color: 'black', textAlign: 'left', justifyContent: 'center' }} />
             </View>}
 
             <View style={{ justifyContent: 'space-between', width: "25%", flexDirection: 'row' }}>
                 {this.renderHeaderButton('search')}
                 {this.renderHeaderButton('email')}
-            </View>
-
-
-        </View>
-
-
+            </View> */}
+      </View>
     </View>
+  );
 
-
-    renderListHeader = () =>
-        <View style={styles.headerBackground}>
-            <View style={styles.header_styles}>
-                <View resizeMode='cover' style={styles.back} >
-                    {this.renderHeaderContent()}
-                </View>
-            </View>
+  renderListHeader = () => (
+    <View style={styles.headerBackground}>
+      <View style={styles.header_styles}>
+        <View resizeMode="cover" style={styles.back}>
+          {this.renderHeaderContent()}
         </View>
+      </View>
+    </View>
+  );
 
-    render() {
-        return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.mainContianer}
-                >
-                    {this.renderListHeader()}
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.mainContianer}>
+          {this.renderListHeader()}
 
-                    <FlatList
-                        data={Array.isArray(this.props.posts) ? this.props.posts?.reverse() : []}
-                        ListHeaderComponent={this.renderNewPostComponent()}
-                        contentContainerStyle={styles.listStyles}
-                        renderItem={this.renderListItems}
-                    />
-                </View>
-            </SafeAreaView>
-        )
-    }
+          <View style={styles.flatlistContainer}>
+            <FlatList
+              data={
+                Array.isArray(this.props.posts)
+                  ? this.props.posts?.reverse()
+                  : []
+              }
+              ListHeaderComponent={this.renderNewPostComponent()}
+              contentContainerStyle={styles.listStyles}
+              renderItem={this.renderListItems}
+            />
+          </View>
+          
+          <Button
+              title="Add New Post"
+              style={styles.btn}
+              onPress={() => {
+                this.props.navigation.navigate('AddPost')
+              }}
+            />
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
-    console.log('state HOME', state)
-    return {
-        posts: state.GeneralReducer.allPosts
-    };
+const mapStateToProps = state => {
+  console.log('state HOME', state);
+  return {
+    posts: state.GeneralReducer.allPosts,
+  };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        get_all_posts: () => dispatch(actions.getPosts()),
-    };
+const mapDispatchToProps = dispatch => {
+  return {
+    get_all_posts: () => dispatch(actions.getPosts()),
+  };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

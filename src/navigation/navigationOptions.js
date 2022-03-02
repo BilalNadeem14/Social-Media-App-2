@@ -15,20 +15,20 @@ import {store} from '../redux/index'
 export const defaultOptions = (activeRouteName, props) => {
     return {
         headerStyle: {
-            height: 18 * vh,
+            height: 10 * vh,
             shadowColor: 'transparent',
             elevation: 0,
             backgroundColor: "#F7F7F7"
 
         },
-        headerRightContainerStyle: {
-            paddingRight: 5 * vw,
-            paddingBottom: 6 * vh
-        },
-        headerLeftContainerStyle: {
-            paddingLeft: 5 * vw,
-            paddingBottom: 6 * vh
-        },
+        // headerRightContainerStyle: {
+        //     paddingRight: 5 * vw,
+        //     paddingBottom: 6 * vh
+        // },
+        // headerLeftContainerStyle: {
+        //     paddingLeft: 5 * vw,
+        //     paddingBottom: 6 * vh
+        // },
         headerRight: () => showRightButton(activeRouteName, props),
         headerLeft: () => showLeftButton(activeRouteName, props),
 
@@ -37,8 +37,8 @@ export const defaultOptions = (activeRouteName, props) => {
         headerTitleStyle: {
             fontFamily: fonts.Fonts.GB,
             color: '#fff',
-            fontSize: 2.3 * vh,
-            paddingBottom: 6 * vh
+            fontSize: 2.8 * vh,
+            // paddingBottom: 6 * vh
 
         },
 
@@ -148,16 +148,16 @@ export const shouldHeaderBeShown = (activeRouteName) => {
 
 export const getTitle = (activeRouteName, props) => {
     switch (activeRouteName) {
-        case 'Services':
-            return 'Services';
+        case 'Login':
+            return 'Personal Info';
         case 'Contact':
             return 'Contact Us';
         case 'Faqs':
             return 'FAQs';
         case 'Signup':
             return 'Sign Up';
-        case 'Login':
-            return 'Login'
+        // case 'Login':
+        //     return 'Login'
         case 'PasswordRecovery':
             return 'Password Recovery'
         case 'PackageDetail':

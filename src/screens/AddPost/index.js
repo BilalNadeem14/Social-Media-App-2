@@ -46,11 +46,10 @@ class AddPost extends React.Component {
     // state[type]
   };
 
-  login = async (id) => {
+  addPost = async (id) => {
+    // this.props.navigation.goBack()
 
-
-    if
-      (!this.state.email) {
+    if(!this.state.email) {
       toast("Enter a valid title for post");
     }
     else if (this.state.password == '') {
@@ -67,6 +66,7 @@ class AddPost extends React.Component {
           email: '',
           password: ''
         }), 1000)
+        this.props.navigation.goBack()
       } catch (e) {
         console.log('addPostScrren error: ', e);
         toast(e)
@@ -157,7 +157,7 @@ class AddPost extends React.Component {
               style={styles.btn}
               labelStyle={styles.btnLabel}
               onPress={() => {
-                this.login();
+                this.addPost();
 
                 // this.props.navigation.navigate("HomeTabNavigator")
               }}

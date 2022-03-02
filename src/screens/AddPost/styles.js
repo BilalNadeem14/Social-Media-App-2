@@ -27,13 +27,13 @@ export default StyleSheet.create({
     headerTitleStyles: {
         fontSize: 3 * vh,
         fontWeight: 'bold',
-        textAlign: 'left',
-        color: '#000000'
+        // textAlign: 'left',
+        color: 'white'
 
     },
     titleContainer: {
         flexDirection: 'row',
-        width: '100%',
+        // width: '100%',
         // paddingVertical: 0.5 * vh,
         justifyContent: 'space-between',
         // paddingHorizontal: 1 * vw
@@ -50,9 +50,9 @@ export default StyleSheet.create({
         height: 10 * vh,
         width: 100 * vw,
         overflow: 'hidden',
-        borderBottomEndRadius: 6 * vh,
-        borderBottomStartRadius: 6 * vh,
-        backgroundColor: '#ffffff'
+        // borderBottomEndRadius: 6 * vh,
+        // borderBottomStartRadius: 6 * vh,
+        backgroundColor: '#442445'
     },
     scrollContent: {
         width: 100 * vw,
@@ -80,10 +80,10 @@ export default StyleSheet.create({
         paddingTop: 1 * vh
     },
     btnLabel: {
-        color: theme.colors.primaryColor
+        color: theme.colors.white
     },
     btn: {
-        width: 40 * vw,
+        width: 90 * vw,
         marginVertical: 2 * vh,
         borderWidth: 0.3 * vh,
         borderColor: theme.colors.primaryColor

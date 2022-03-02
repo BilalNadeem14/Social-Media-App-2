@@ -10,7 +10,7 @@ export const toast = (msg) => {
 const persistConfig = {
   key: 'socialMediaApp-storage-root',
   storage: AsyncStorage,
-  // whitelist: ['authReducer']
+  whitelist: ['authReducer']
 };
 
 export const regex = {

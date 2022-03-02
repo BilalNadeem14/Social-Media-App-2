@@ -239,15 +239,15 @@ export default styles = StyleSheet.create({
 
     },
     headerBgContainer: {
-        borderBottomLeftRadius: 6 * vw,
-        borderBottomRightRadius: 6 * vw,
+        // borderBottomLeftRadius: 6 * vw,
+        // borderBottomRightRadius: 6 * vw,
         overflow: "hidden",
         backgroundColor: "#F7F7F7"
 
     },
     headerStyle: {
         width: 100 * vw,
-        height: 18 * vh,
+        height: 12 * vh,
         backgroundColor: theme.colors.primaryColor,
     }
 })

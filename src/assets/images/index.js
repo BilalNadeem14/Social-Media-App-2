@@ -50,6 +50,7 @@ module.exports = {
         radioCheck: require('./icons/radioCheck.png'),
         radioUncheck: require('./icons/radioUncheck.png'),
         cancelIcon: require('./icons/cancelIcon.png'),
+        placeholder: require('./icons/placeholder.png'),
 
     },
     tabIcons: {
@@ -83,7 +84,8 @@ module.exports = {
 
         }
     
-    }
+    },
+    // placeholder: require('./images/placeholder.png')
     
 }
 

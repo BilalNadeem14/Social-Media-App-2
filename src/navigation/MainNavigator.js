@@ -11,7 +11,7 @@ const RootStack = createStackNavigator()
 const RootStackNavigator = (props) => {
     const {loggedIn} = props
     // const loggedIn = true
-    return !loggedIn?( //<Text>Hey</Text>
+    return !loggedIn?(
         <RootStack.Navigator
             headerMode="none"
             initialRouteName={'AuthStackNavigator'}

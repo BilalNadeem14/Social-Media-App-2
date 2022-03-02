@@ -6,8 +6,13 @@ import { store, persistor } from './src/redux';
 import Login from './src/screens/Login'
 import vh from './src/utils/units/vh';
 import Navigator from './src/navigation'
+import AnimatedSplash from 'react-native-animated-splash';
 
 class App extends React.Component {
+
+  componentDidMount(){
+      AnimatedSplash.hide();
+  }
   render() {
     return (
       <Provider store={store}>

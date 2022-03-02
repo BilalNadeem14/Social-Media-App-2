@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: 6 * vh,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.gray0,
     borderRadius: 0.5 * vh,
 
     flexDirection: 'row',

@@ -6,8 +6,8 @@ import theme from '../../utils/units/theme';
 export default style = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: theme.colors.lightPurple2,
-    height: vh * 6,
+    backgroundColor: theme.colors.primaryColor,
+    height: vh * 7,
     borderRadius: vw * 1.5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -22,5 +22,5 @@ export default style = StyleSheet.create({
     // borderWidth: vw * 0.3,
     elevation: 2,
   },
-  label: { fontSize: vh * 1.74, color: 'white', fontFamily: Fonts.GB },
+  label: { fontSize: vh * 2.2, color: 'white', fontFamily: Fonts.GB },
 });

@@ -2,7 +2,8 @@ import vh from "./vh";
 
 export default theme = {
     colors: {
-        primaryColor: '#5255ff',//'#AD4FC7',
+        primaryColor: '#442445',//'#AD4FC7',
+        gray0: '#F1F2F6',
         gray: '#9C9C9C',
 
         purple2: "#781393",
